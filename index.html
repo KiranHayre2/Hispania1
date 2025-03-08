@@ -216,6 +216,23 @@
             box-shadow: 0 0 12px var(--white);
         }
         
+        /* Video container styles */
+        .video-container {
+            width: 80%;
+            max-width: 900px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+        
         /* Simplified Animations */
         .slide.active .slide-overlay {
             animation: fadeIn 1s ease forwards;
@@ -261,6 +278,10 @@
             .text-content {
                 padding: 20px;
             }
+            
+            .video-container {
+                width: 95%;
+            }
         }
     </style>
 </head>
@@ -274,8 +295,19 @@
             </div>
         </div>
         
-        <!-- Slide 2: Travel Package -->
-        <div class="slide" id="slide2" style="background-image: url('https://i.pinimg.com/originals/1f/59/dc/1f59dcb7aa6620dc99e58deef3510e23.jpg');">
+        <!-- New Slide 2: Video -->
+        <div class="slide" id="slide2" style="background-color: #000;">
+            <div class="slide-overlay">
+                <h1>Explora Jaipur</h1>
+                <h2>La magia de la Ciudad Rosa</h2>
+                <div class="video-container">
+                    <div id="youtubePlayer"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Travel Package (previously Slide 2) -->
+        <div class="slide" id="slide3" style="background-image: url('https://i.pinimg.com/originals/1f/59/dc/1f59dcb7aa6620dc99e58deef3510e23.jpg');">
             <div class="slide-overlay">
                 <h1>Plan de Viaje</h1>
                 <div class="content">
@@ -296,8 +328,8 @@
             </div>
         </div>
         
-        <!-- Slide 3: Jaipur Introduction -->
-        <div class="slide" id="slide3" style="background-image: url('https://i.insider.com/5df014b0fd9db2605576bb35?width=1300&format=jpeg&auto=webp');">
+        <!-- Slide 4: Jaipur Introduction (previously Slide 3) -->
+        <div class="slide" id="slide4" style="background-image: url('https://i.insider.com/5df014b0fd9db2605576bb35?width=1300&format=jpeg&auto=webp');">
             <div class="slide-overlay">
                 <h1>Descubre Jaipur</h1>
                 <h2>La joya de Rajastán</h2>
@@ -313,8 +345,8 @@
             </div>
         </div>
         
-        <!-- Slide 4: Hawa Mahal -->
-        <div class="slide" id="slide4" style="background-image: url('https://img.pac.ru/landmarks/446984/big/E927DD2E7F00010101889F38C194FD4D.jpg');">
+        <!-- Slide 5: Hawa Mahal (previously Slide 4) -->
+        <div class="slide" id="slide5" style="background-image: url('https://img.pac.ru/landmarks/446984/big/E927DD2E7F00010101889F38C194FD4D.jpg');">
             <div class="slide-overlay">
                 <h1>Hawa Mahal</h1>
                 <div class="content">
@@ -329,8 +361,8 @@
             </div>
         </div>
         
-        <!-- Slide 5: Amber Fort -->
-        <div class="slide" id="slide5" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Amber_Fort%2C_Jaipur%2C_Rajasthan.JPG/1200px-Amber_Fort%2C_Jaipur%2C_Rajasthan.JPG');">
+        <!-- Slide 6: Amber Fort (previously Slide 5) -->
+        <div class="slide" id="slide6" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Amber_Fort%2C_Jaipur%2C_Rajasthan.JPG/1200px-Amber_Fort%2C_Jaipur%2C_Rajasthan.JPG');">
             <div class="slide-overlay">
                 <h1>Fuerte Amber</h1>
                 <div class="content">
@@ -345,8 +377,8 @@
             </div>
         </div>
         
-        <!-- Slide 6: City Palace -->
-        <div class="slide" id="slide6" style="background-image: url('https://cdn.getyourguide.com/img/location/5c997424b4c17-wide.jpeg/99.jpg');">
+        <!-- Slide 7: City Palace (previously Slide 6) -->
+        <div class="slide" id="slide7" style="background-image: url('https://cdn.getyourguide.com/img/location/5c997424b4c17-wide.jpeg/99.jpg');">
             <div class="slide-overlay">
                 <h1>Palacio de la Ciudad</h1>
                 <div class="content">
@@ -361,8 +393,8 @@
             </div>
         </div>
         
-        <!-- Slide 7: Local Cuisine -->
-        <div class="slide" id="slide7" style="background-image: url('https://s.yimg.com/ny/api/res/1.2/LTyk0nDehrsQ1vcFhbw_wQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04Mjg-/https://media.zenfs.com/en/travel_noire_articles_954/d361fcd74669f54c87abd56542adc9ea');">
+        <!-- Slide 8: Local Cuisine (previously Slide 7) -->
+        <div class="slide" id="slide8" style="background-image: url('https://s.yimg.com/ny/api/res/1.2/LTyk0nDehrsQ1vcFhbw_wQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04Mjg-/https://media.zenfs.com/en/travel_noire_articles_954/d361fcd74669f54c87abd56542adc9ea');">
             <div class="slide-overlay">
                 <h1>🍲 Sabores de Jaipur</h1>
                 <div class="content">
@@ -390,9 +422,40 @@
     <!-- Slide indicators -->
     <div class="slide-indicator" id="indicators"></div>
     
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    
     <script>
         let currentSlide = 1;
         const totalSlides = document.querySelectorAll('.slide').length;
+        let player;
+        const videoId = "DJbdZrOhGso"; // Example: Jaipur travel video
+        
+        // Load YouTube Player API
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtubePlayer', {
+                height: '100%',
+                width: '100%',
+                videoId: videoId,
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 1,
+                    'rel': 0,
+                    'showinfo': 0,
+                    'modestbranding': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            // Player ready but don't autoplay until slide is shown
+            if (currentSlide === 2) {
+                event.target.playVideo();
+            }
+        }
         
         // Initialize slide indicators
         const indicatorsContainer = document.getElementById('indicators');
@@ -421,12 +484,30 @@
             });
         }
         
+        function handleVideoForSlide(previousSlide, newSlide) {
+            if (player && player.getPlayerState) {
+                if (previousSlide === 2) {
+                    // Stop video when navigating away from slide 2
+                    player.pauseVideo();
+                }
+                
+                if (newSlide === 2) {
+                    // Start video when navigating to slide 2
+                    player.playVideo();
+                }
+            }
+        }
+        
         function showSlide(slideNumber) {
+            const previousSlide = currentSlide;
             document.getElementById('slide' + currentSlide).classList.remove('active');
             document.getElementById('slide' + slideNumber).classList.add('active');
             currentSlide = slideNumber;
             updateProgressBar();
             updateIndicators();
+            
+            // Handle video playback
+            handleVideoForSlide(previousSlide, currentSlide);
         }
         
         function nextSlide() {
