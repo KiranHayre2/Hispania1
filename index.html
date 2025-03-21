@@ -218,8 +218,9 @@
         
         /* Video container styles */
         .video-container {
-            width: 80%;
-            max-width: 900px;
+            width: 90%;
+            max-width: 1600px;
+            max-height: 900px;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
@@ -232,26 +233,167 @@
             aspect-ratio: 16/9;
             border: none;
         }
-        
-        /* Simplified Animations */
-        .slide.active .slide-overlay {
-            animation: fadeIn 1s ease forwards;
+
+        /* Slide 8 Specific Styles */
+        .food-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1300px;
+            padding: 20px;
         }
-        
-        h1, h2, .content {
-            animation: slideUp 1s ease forwards;
+
+        .food-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px;
+            text-align: center;
         }
-        
+
+        .food-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .food-image:hover {
+            transform: scale(1.1);
+        }
+
+        .food-description {
+            margin-top: 10px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 12px;
+            border-radius: 20px;
+            max-width: 150px;
+        }
+
+        /* Unique Animations */
+        @keyframes glowIn {
+            0% { opacity: 0; text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+            50% { opacity: 0.5; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+            100% { opacity: 1; text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); }
+        }
+
+        @keyframes spiralUp {
+            0% { opacity: 0; transform: rotate(-360deg) scale(0.5) translateY(100px); }
+            100% { opacity: 1; transform: rotate(0) scale(1) translateY(0); }
+        }
+
+        @keyframes flipReveal {
+            0% { opacity: 0; transform: rotateX(90deg); }
+            100% { opacity: 1; transform: rotateX(0); }
+        }
+
+        @keyframes bouncePop {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.2); }
+            75% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes waveIn {
+            0% { opacity: 0; transform: translateX(-100%) skewX(-30deg); }
+            60% { transform: translateX(20%) skewX(10deg); }
+            100% { opacity: 1; transform: translateX(0) skewX(0); }
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0; filter: brightness(0.5); }
+            50% { filter: brightness(1.5); }
+            100% { opacity: 1; filter: brightness(1); }
+        }
+
+        @keyframes twistIn {
+            0% { opacity: 0; transform: rotateY(90deg) scale(0.8); }
+            100% { opacity: 1; transform: rotateY(0) scale(1); }
+        }
+
+        @keyframes explodeIn {
+            0% { opacity: 0; transform: scale(0) rotate(45deg); }
+            70% { transform: scale(1.1) rotate(-10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
+        }
+
+        /* Slide-specific animations */
+        #slide1 h1 { animation: glowIn 1.2s ease forwards; }
+        #slide1 h2 { animation: spiralUp 1.2s ease 0.3s forwards; }
+
+        #slide2 h1 { animation: bouncePop 1s ease forwards; }
+        #slide2 h2 { animation: waveIn 1s ease 0.3s forwards; }
+        #slide2 .video-container { animation: flipReveal 1.2s ease 0.6s forwards; }
+
+        #slide3 h1 { animation: twistIn 1s ease forwards; }
+        #slide3 .package-item:nth-child(1) { animation: waveIn 0.8s ease 0.6s forwards; }
+        #slide3 .package-item:nth-child(2) { animation: flipReveal 0.8s ease 0.8s forwards; }
+        #slide3 .package-item:nth-child(3) { animation: spiralUp 0.8s ease 1s forwards; }
+        #slide3 .package-item:nth-child(4) { animation: shimmer 0.8s ease 1.2s forwards; }
+        #slide3 .package-item:nth-child(5) { animation: twistIn 0.8s ease 1.4s forwards; }
+        #slide3 .price { animation: explodeIn 1s ease 1.6s forwards; }
+        #slide3 .image-content { animation: bouncePop 1s ease 1.8s forwards; }
+
+        #slide4 h1 { animation: shimmer 1s ease forwards; }
+        #slide4 h2 { animation: glowIn 1s ease 0.3s forwards; }
+        #slide4 .text-content p:nth-child(1) { animation: spiralUp 1s ease 0.6s forwards; }
+        #slide4 .text-content p:nth-child(2) { animation: waveIn 1s ease 0.8s forwards; }
+        #slide4 .image-content { animation: twistIn 1s ease 1s forwards; }
+
+        #slide5 h1 { animation: explodeIn 1s ease forwards; }
+        #slide5 .text-content p:nth-child(1) { animation: flipReveal 1s ease 0.6s forwards; }
+        #slide5 .text-content p:nth-child(2) { animation: bouncePop 1s ease 0.8s forwards; }
+        #slide5 .image-content { animation: shimmer 1s ease 1s forwards; }
+
+        #slide6 h1 { animation: waveIn 1s ease forwards; }
+        #slide6 .text-content p:nth-child(1) { animation: glowIn 1s ease 0.6s forwards; }
+        #slide6 .text-content p:nth-child(2) { animation: spiralUp 1s ease 0.8s forwards; }
+        #slide6 .image-content { animation: explodeIn 1s ease 1s forwards; }
+
+        #slide7 h1 { animation: flipReveal 1s ease forwards; }
+        #slide7 .text-content p:nth-child(1) { animation: twistIn 1s ease 0.6s forwards; }
+        #slide7 .text-content p:nth-child(2) { animation: shimmer 1s ease 0.8s forwards; }
+        #slide7 .image-content { animation: waveIn 1s ease 1s forwards; }
+
+        #slide8 h1 { animation: spiralUp 1s ease forwards; }
+        #slide8 .food-item:nth-child(1) .food-image { animation: bouncePop 1s ease 0.6s forwards; }
+        #slide8 .food-item:nth-child(1) .food-description { animation: waveIn 1s ease 0.8s forwards; }
+        #slide8 .food-item:nth-child(2) .food-image { animation: spiralUp 1s ease 1s forwards; }
+        #slide8 .food-item:nth-child(2) .food-description { animation: flipReveal 1s ease 1.2s forwards; }
+        #slide8 .food-item:nth-child(3) .food-image { animation: explodeIn 1s ease 1.4s forwards; }
+        #slide8 .food-item:nth-child(3) .food-description { animation: glowIn 1s ease 1.6s forwards; }
+        #slide8 .food-item:nth-child(4) .food-image { animation: twistIn 1s ease 1.8s forwards; }
+        #slide8 .food-item:nth-child(4) .food-description { animation: shimmer 1s ease 2s forwards; }
+        #slide8 .food-item:nth-child(5) .food-image { animation: flipReveal 1s ease 2.2s forwards; }
+        #slide8 .food-item:nth-child(5) .food-description { animation: bouncePop 1s ease 2.4s forwards; }
+
+        /* Initial state */
+        .slide h1, .slide h2, .slide .text-content p, 
+        .slide .package-item, .slide .price, .slide .image-content,
+        .slide .video-container, .slide .food-image, .slide .food-description {
+            opacity: 0;
+        }
+
+        /* Slide transition */
+        .slide.active {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             .slide-overlay {
@@ -281,6 +423,22 @@
             
             .video-container {
                 width: 95%;
+                max-height: 400px;
+            }
+
+            .food-gallery {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .food-item {
+                width: 140px;
+            }
+
+            .food-image {
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
@@ -295,7 +453,7 @@
             </div>
         </div>
         
-        <!-- New Slide 2: Video -->
+        <!-- Slide 2: Video -->
         <div class="slide" id="slide2" style="background-color: #000;">
             <div class="slide-overlay">
                 <h1>Explora Jaipur</h1>
@@ -306,7 +464,7 @@
             </div>
         </div>
         
-        <!-- Slide 3: Travel Package (previously Slide 2) -->
+        <!-- Slide 3: Travel Package -->
         <div class="slide" id="slide3" style="background-image: url('https://i.pinimg.com/originals/1f/59/dc/1f59dcb7aa6620dc99e58deef3510e23.jpg');">
             <div class="slide-overlay">
                 <h1>Plan de Viaje</h1>
@@ -328,7 +486,7 @@
             </div>
         </div>
         
-        <!-- Slide 4: Jaipur Introduction (previously Slide 3) -->
+        <!-- Slide 4: Jaipur Introduction -->
         <div class="slide" id="slide4" style="background-image: url('https://i.insider.com/5df014b0fd9db2605576bb35?width=1300&format=jpeg&auto=webp');">
             <div class="slide-overlay">
                 <h1>Descubre Jaipur</h1>
@@ -345,7 +503,7 @@
             </div>
         </div>
         
-        <!-- Slide 5: Hawa Mahal (previously Slide 4) -->
+        <!-- Slide 5: Hawa Mahal -->
         <div class="slide" id="slide5" style="background-image: url('https://img.pac.ru/landmarks/446984/big/E927DD2E7F00010101889F38C194FD4D.jpg');">
             <div class="slide-overlay">
                 <h1>Hawa Mahal</h1>
@@ -361,7 +519,7 @@
             </div>
         </div>
         
-        <!-- Slide 6: Amber Fort (previously Slide 5) -->
+        <!-- Slide 6: Amber Fort -->
         <div class="slide" id="slide6" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Amber_Fort%2C_Jaipur%2C_Rajasthan.JPG/1200px-Amber_Fort%2C_Jaipur%2C_Rajasthan.JPG');">
             <div class="slide-overlay">
                 <h1>Fuerte Amber</h1>
@@ -377,7 +535,7 @@
             </div>
         </div>
         
-        <!-- Slide 7: City Palace (previously Slide 6) -->
+        <!-- Slide 7: City Palace -->
         <div class="slide" id="slide7" style="background-image: url('https://cdn.getyourguide.com/img/location/5c997424b4c17-wide.jpeg/99.jpg');">
             <div class="slide-overlay">
                 <h1>Palacio de la Ciudad</h1>
@@ -393,17 +551,40 @@
             </div>
         </div>
         
-        <!-- Slide 8: Local Cuisine (previously Slide 7) -->
+        <!-- Slide 8: Local Cuisine -->
         <div class="slide" id="slide8" style="background-image: url('https://s.yimg.com/ny/api/res/1.2/LTyk0nDehrsQ1vcFhbw_wQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04Mjg-/https://media.zenfs.com/en/travel_noire_articles_954/d361fcd74669f54c87abd56542adc9ea');">
             <div class="slide-overlay">
                 <h1>🍲 Sabores de Jaipur</h1>
-                <div class="content">
-                    <div class="text-content">
-                        <p>Prueba la cocina rajastaní: Dal Baati Churma, Laal Maas y Gatte ki Sabzi son platos llenos de tradición y sabor.</p>
-                        <p>Disfruta dulces como Ghevar y Pyaaz Kachori con un Masala Chai.</p>
+                <div class="food-gallery">
+                    <div class="food-item">
+                        <div class="food-image">
+                            <img src="https://i.ytimg.com/vi/3VnUqfOdkHk/maxresdefault.jpg" alt="Dal Baati Churma">
+                        </div>
+                        <div class="food-description">Dal Baati Churma: Lentejas con pan al horno</div>
                     </div>
-                    <div class="image-content">
-                        <img src="https://assets.cntraveller.in/photos/64c77e630d528c30692aaa58/16:9/w_1024%2Cc_limit/dal%2520bhaati%2520lead.jpeg" alt="Jaipur Cuisine">
+                    <div class="food-item">
+                        <div class="food-image">
+                            <img src="https://images.news18.com/ibnlive/uploads/2022/11/shutterstock_1552896440-166973381616x9.jpg" alt="Laal Maas">
+                        </div>
+                        <div class="food-description">Laal Maas: Cordero picante rojo</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-image">
+                            <img src="https://i.ytimg.com/vi/UOuY-5wpMP4/maxresdefault.jpg" alt="Gatte ki Sabzi">
+                        </div>
+                        <div class="food-description">Gatte ki Sabzi: Bolas de harina en curry</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-image">
+                            <img src="https://i.ytimg.com/vi/XpJwEM8F_6A/maxresdefault.jpg" alt="Ghevar">
+                        </div>
+                        <div class="food-description">Ghevar: Dulce crujiente con almíbar</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-image">
+                            <img src="https://www.agoda.com/wp-content/uploads/2024/04/Shegaon-or-Rajasthani-Kachori.jpg" alt="Pyaaz Kachori">
+                        </div>
+                        <div class="food-description">Pyaaz Kachori: Empanada de cebolla</div>
                     </div>
                 </div>
             </div>
@@ -429,7 +610,7 @@
         let currentSlide = 1;
         const totalSlides = document.querySelectorAll('.slide').length;
         let player;
-        const videoId = "DJbdZrOhGso"; // Example: Jaipur travel video
+        const videoId = "DJbdZrOhGso"; // Jaipur travel video
         
         // Load YouTube Player API
         function onYouTubeIframeAPIReady() {
@@ -442,7 +623,10 @@
                     'controls': 1,
                     'rel': 0,
                     'showinfo': 0,
-                    'modestbranding': 1
+                    'modestbranding': 1,
+                    'fs': 1,
+                    'iv_load_policy': 3,
+                    'quality': 'hd1080'
                 },
                 events: {
                     'onReady': onPlayerReady
@@ -451,7 +635,6 @@
         }
         
         function onPlayerReady(event) {
-            // Player ready but don't autoplay until slide is shown
             if (currentSlide === 2) {
                 event.target.playVideo();
             }
@@ -487,12 +670,10 @@
         function handleVideoForSlide(previousSlide, newSlide) {
             if (player && player.getPlayerState) {
                 if (previousSlide === 2) {
-                    // Stop video when navigating away from slide 2
                     player.pauseVideo();
                 }
                 
                 if (newSlide === 2) {
-                    // Start video when navigating to slide 2
                     player.playVideo();
                 }
             }
@@ -506,11 +687,10 @@
             updateProgressBar();
             updateIndicators();
             
-            // Handle video playback
             handleVideoForSlide(previousSlide, currentSlide);
         }
         
-        function nextSlide() {
+                function nextSlide() {
             if (currentSlide < totalSlides) {
                 showSlide(currentSlide + 1);
             } else {
